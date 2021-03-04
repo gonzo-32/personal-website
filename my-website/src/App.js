@@ -2,12 +2,17 @@ import React from 'react'
 // import './App.scss'
 import Navigation from './components/Navigation'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button } from 'react-bootstrap'
+import Header from './components/Header'
 
 function App() {
   return(
-    <div className="App">
-        <Navigation></Navigation>
+    <div className='container container-fluid'>
+      <Navigation/>
+
+      <Header/>
+      
+        
+
     </div>
   )
 }

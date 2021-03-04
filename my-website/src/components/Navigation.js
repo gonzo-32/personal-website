@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import Collapse from 'react-bootstrap/Collapse'
 
 const NavItem = props => {
     const pageURI = window.location.pathname+window.location.search
@@ -17,24 +17,29 @@ const NavItem = props => {
 }
 
 function Navigation() {
+  const [open, setOpen] = useState(false)
+  
   return(
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="/">HG</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
+            <nav className="navbar-expand-sm navbar navbar-dark bg-dark fixed-top">
+              <a className="navbar-brand" href="/">HG</a>
+              <button onClick={() => setOpen(!open)} className="navbar-toggler" type="button" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded={open} aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon"></span>
+              </button>
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">
+              <Collapse in={open}>
+                <div className="collapse navbar-collapse flex-grow-1 text-right" id="navbarSupportedContent">
+                    <ul className="navbar-nav ml-auto text-center flex-nowrap">
 
-                    <NavItem path="/" name="Home" />
-                    <NavItem path="/page2" name="About" />
-                    <NavItem path="/page2" name="Projects" />
-                    <NavItem path="/page3" name="Resume" />
-    
-                </ul>
-            </div>
-        </nav>
+                      <NavItem path="/" name="Home" />
+                      <NavItem path="/page2" name="About" />
+                      <NavItem path="/page3" name="Projects" />
+                      <NavItem path="/page4" name="Resume" />
+                      
+                    </ul>
+                  </div>
+
+              </Collapse>   
+            </nav>
   )
 }
 
